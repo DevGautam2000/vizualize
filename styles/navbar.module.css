@@ -1,0 +1,51 @@
+.navbar {
+  width: 100vw;
+  height: 60px;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6vw;
+}
+
+.navbar > * {
+  flex: 0.5;
+}
+.navbar ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navbar ul > li {
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  flex: calc(0.7 / 3);
+  padding: 6px 0;
+  width: max-content;
+  border-radius: 50px;
+}
+
+.navbar ul > li:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.navbar ul > li:nth-child(3) {
+  flex: 0.3;
+  color: gray;
+}
+.navbar ul > li:nth-child(3):hover {
+  background: black;
+}
+.appname {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

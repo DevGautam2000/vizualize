@@ -1,0 +1,10 @@
+.footer {
+  color: white;
+  mix-blend-mode: difference;
+  position: absolute;
+  bottom: 2vh;
+  left: 0;
+  font-size: 0.7rem;
+  right: 0;
+  text-align: center;
+}

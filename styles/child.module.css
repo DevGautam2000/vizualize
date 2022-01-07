@@ -1,0 +1,33 @@
+.child:root {
+  --c-height: 0;
+  --c-width: 0;
+  --c-padding: 0;
+  --c-position: "";
+  --c-display: "";
+  --c-align-items: "";
+  --c-justify-content: "";
+}
+.child {
+  height: var(--c-height);
+  width: var(--c-width);
+  background: turquoise;
+  border-radius: 10px;
+  padding: var(--c-padding);
+  max-height: 800px;
+  max-width: 800px;
+  min-width: 20px;
+  min-height: 20px;
+  position: var(--c-position);
+  transition: all 0.1s linear;
+  top: 0;
+}
+
+.child::before {
+  content: attr(data-name);
+  position: absolute;
+  top: 3%;
+  left: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 6px 8px;
+  color: white;
+}

@@ -1,0 +1,35 @@
+.parent:root {
+  --p-height: 0;
+  --p-width: 0;
+  --p-padding: 0;
+  --p-position: "";
+  --p-display: "";
+  --p-align-items: "";
+  --p-justify-content: "";
+}
+.parent {
+  height: var(--p-height);
+  width: var(--p-width);
+  background: #4169e1;
+  border-radius: 10px;
+  padding: var(--p-padding);
+  max-height: 800px;
+  max-width: 800px;
+  min-width: 20px;
+  min-height: 20px;
+  position: var(--p-position);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s linear;
+}
+
+.parent::before {
+  content: attr(data-name);
+  position: absolute;
+  top: 3%;
+  right: 100%;
+  background: #000000b3;
+  padding: 6px 8px;
+  color: white;
+}

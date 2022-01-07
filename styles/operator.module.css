@@ -1,0 +1,42 @@
+.operator {
+  height: 100%;
+  flex: 0.4;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.operator > * {
+  flex: 0.5;
+}
+
+.operator section {
+  padding: 2rem;
+}
+
+.operator header {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.operator main {
+  display: flex;
+}
+.operator main > div {
+  display: flex;
+  flex-direction: column;
+}
+/* .operator main > div > * {
+  margin-bottom: 10px;
+} */
+.operator span {
+  padding: 6px 8px;
+  margin-bottom: 10px;
+}
+
+.operator input {
+  padding: 6px 8px;
+  margin-bottom: 10px;
+}
