@@ -30,3 +30,24 @@ a {
 input[type="range"] {
   cursor: pointer;
 }
+input[type="color"] {
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 30px;
+  height: 30px;
+  background: none !important;
+}
+input[type="color"] > * {
+  border-radius: 5px !important;
+}
+
+select {
+  margin: auto 0;
+  transform: translateY(-25%);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}

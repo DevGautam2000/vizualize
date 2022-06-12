@@ -6,11 +6,13 @@
   --c-display: "";
   --c-align-items: "";
   --c-justify-content: "";
+  --c-tooltip-padding: 0;
+  --c-background: #40e0d0;
 }
 .child {
   height: var(--c-height);
   width: var(--c-width);
-  background: turquoise;
+  background: var(--c-background);
   border-radius: 10px;
   padding: var(--c-padding);
   max-height: 800px;
@@ -28,6 +30,6 @@
   top: 3%;
   left: 100%;
   background: rgba(0, 0, 0, 0.7);
-  padding: 6px 8px;
   color: white;
+  padding: var(--c-tooltip-padding);
 }

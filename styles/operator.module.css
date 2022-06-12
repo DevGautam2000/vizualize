@@ -15,6 +15,13 @@
   padding: 2rem;
 }
 
+.operator section:nth-of-type(1) > header {
+  color: var(--p-background);
+}
+.operator section:nth-of-type(2) > header {
+  color: var(--c-background);
+}
+
 .operator header {
   margin-bottom: 10px;
   font-weight: bold;

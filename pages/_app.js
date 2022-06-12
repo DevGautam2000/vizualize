@@ -12,8 +12,10 @@ function MyApp({ Component, pageProps }) {
     height: "200px",
     width: "200px",
   });
-  const [p_position, setp_position] = useState("relative");
+  const [p_position, setp_position] = useState("static");
   const [p_tblr, setp_tblr] = useState({ t: 0, b: 0, l: 0, r: 0 });
+  const [pBackground, setpBackground] = useState("#ff6347");
+  const [cBackground, setcBackground] = useState("#40e0d0");
   const [p_display, setp_display] = useState({
     display: "flex",
     alignItems: "center",
@@ -25,7 +27,7 @@ function MyApp({ Component, pageProps }) {
     height: "100px",
     width: "100px",
   });
-  const [c_position, setc_position] = useState("relative");
+  const [c_position, setc_position] = useState("static");
   const [c_tblr, setc_tblr] = useState({ t: 0, b: 0, l: 0, r: 0 });
   const [c_display, setc_display] = useState({
     display: "flex",
@@ -50,6 +52,10 @@ function MyApp({ Component, pageProps }) {
     setp_display,
     c_display,
     setc_display,
+    pBackground,
+    setpBackground,
+    cBackground,
+    setcBackground,
   };
 
   useEffect(() => {

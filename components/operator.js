@@ -10,6 +10,10 @@ export default function Operator() {
     setChildDimensions,
     setp_position,
     setc_position,
+    pBackground,
+    cBackground,
+    setpBackground,
+    setcBackground,
   } = React.useContext(Context);
 
   const [pheight, setpheight] = useState("200");
@@ -20,7 +24,18 @@ export default function Operator() {
   return (
     <div className={style.operator}>
       <section>
-        <header>parent</header>
+        <header style={{ color: pBackground }}>
+          parent
+          <span>
+            <input
+              type="color"
+              value={pBackground}
+              onChange={(e) => {
+                setpBackground(() => e.target.value);
+              }}
+            />
+          </span>
+        </header>
 
         <main>
           <div>
@@ -65,6 +80,7 @@ export default function Operator() {
                 setp_position(() => e.target.value);
               }}
             >
+              <option value="static">static</option>
               <option value="relative">relative</option>
               <option value="absolute">absolute</option>
               <option value="fixed">fixed</option>
@@ -75,7 +91,18 @@ export default function Operator() {
       </section>
 
       <section>
-        <header>child</header>
+        <header style={{ color: cBackground }}>
+          child{" "}
+          <span>
+            <input
+              type="color"
+              value={cBackground}
+              onChange={(e) => {
+                setcBackground(() => e.target.value);
+              }}
+            />
+          </span>
+        </header>
 
         <main>
           <div>
@@ -120,6 +147,7 @@ export default function Operator() {
                 setc_position(() => e.target.value);
               }}
             >
+              <option value="static">static</option>
               <option value="relative">relative</option>
               <option value="absolute">absolute</option>
               <option value="fixed">fixed</option>

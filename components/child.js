@@ -6,6 +6,7 @@ export default function Child() {
   const {
     childDimensions,
     c_position,
+    cBackground,
     c_display: { display, alignItems, justifyContent },
   } = React.useContext(Context);
 
@@ -19,9 +20,20 @@ export default function Child() {
       root.style.setProperty("--c-display", display);
       root.style.setProperty("--c-align-items", alignItems);
       root.style.setProperty("--c-justify-content", justifyContent);
+      root.style.setProperty("--c-background", cBackground);
+      root.style.setProperty(
+        "--c-tooltip-padding",
+        c_position === "static" ? 0 : "6px 8px"
+      );
     };
 
     return effect();
-  }, [childDimensions, c_position]);
-  return <div className={style.child} data-name="child"></div>;
+  }, [childDimensions, c_position, cBackground]);
+
+  return (
+    <div
+      className={style.child}
+      data-name={c_position === "static" ? "" : "child"}
+    ></div>
+  );
 }
