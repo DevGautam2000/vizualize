@@ -3,10 +3,13 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { PageHeader } from "@/components/ui/page-header"
+import { ButtonGroup } from "@/components/ui/button-group"
+import { DemoContainer } from "@/components/ui/demo-container"
 
 export default function GridPage() {
   const [columns, setColumns] = useState(3)
-  const [rows, setRows] = useState("equal")
+  const [rows, setRows] = useState("auto")
   const [layout, setLayout] = useState(1)
   const [gap, setGap] = useState(2)
 
@@ -87,10 +90,10 @@ export default function GridPage() {
 
   return (
     <div className="container mx-auto max-w-7xl py-8 space-y-8">
-      <div className="flex flex-col items-start gap-4">
-        <h1 className="text-4xl font-bold tracking-tight">Grid Layout</h1>
-        <p className="text-lg text-muted-foreground">Master CSS Grid with interactive examples and visual guides.</p>
-      </div>
+      <PageHeader
+        title="Grid Layout"
+        description="Master CSS Grid with interactive examples and visual guides."
+      />
     
       <div className="grid gap-8 md:grid-cols-2">
         <Card>
@@ -99,46 +102,29 @@ export default function GridPage() {
             <CardDescription>Define the columns of your grid layout</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className={`h-[200px] rounded-lg border bg-muted/40 p-4 grid ${getGridTemplateColumns()} gap-2`}>
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-center rounded-lg bg-primary text-primary-foreground transition-all duration-300 ease-in-out hover:scale-105"
-                >
-                  {i + 1}
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <Button 
-                variant={columns === 1 ? "default" : "outline"} 
-                size="sm"
-                onClick={() => setColumns(1)}
-              >
-                1 Column
-              </Button>
-              <Button 
-                variant={columns === 2 ? "default" : "outline"} 
-                size="sm"
-                onClick={() => setColumns(2)}
-              >
-                2 Columns
-              </Button>
-              <Button 
-                variant={columns === 3 ? "default" : "outline"} 
-                size="sm"
-                onClick={() => setColumns(3)}
-              >
-                3 Columns
-              </Button>
-              <Button 
-                variant={columns === "auto" ? "default" : "outline"} 
-                size="sm"
-                onClick={() => setColumns("auto")}
-              >
-                Auto-fit
-              </Button>
-            </div>
+            <DemoContainer>
+              <div className={`grid ${getGridTemplateColumns()} gap-2 h-full transition-[grid-template-columns] duration-300 ease-in-out`}>
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center justify-center rounded-lg bg-primary text-primary-foreground transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg"
+                  >
+                    {i + 1}
+                  </div>
+                ))}
+              </div>
+            </DemoContainer>
+            <ButtonGroup
+              label="Columns"
+              options={[
+                { value: 1, label: "1 Column" },
+                { value: 2, label: "2 Columns" },
+                { value: 3, label: "3 Columns" },
+                { value: "auto", label: "Auto-fit" }
+              ]}
+              value={columns}
+              onChange={setColumns}
+            />
           </CardContent>
         </Card>
 
@@ -148,39 +134,28 @@ export default function GridPage() {
             <CardDescription>Control the height of grid rows</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className={`h-[200px] rounded-lg border bg-muted/40 p-4 grid ${getGridTemplateRows()} grid-flow-col gap-2`}>
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-center rounded-lg bg-primary text-primary-foreground transition-all duration-300 ease-in-out hover:scale-105"
-                >
-                  {i + 1}
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <Button 
-                variant={rows === "equal" ? "default" : "outline"} 
-                size="sm"
-                onClick={() => setRows("equal")}
-              >
-                Equal Height
-              </Button>
-              <Button 
-                variant={rows === "auto" ? "default" : "outline"} 
-                size="sm"
-                onClick={() => setRows("auto")}
-              >
-                Auto Height
-              </Button>
-              <Button 
-                variant={rows === "mixed" ? "default" : "outline"} 
-                size="sm"
-                onClick={() => setRows("mixed")}
-              >
-                Mixed Heights
-              </Button>
-            </div>
+            <DemoContainer>
+              <div className={`grid ${getGridTemplateRows()} grid-flow-col gap-2 h-full`}>
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center justify-center rounded-lg bg-primary text-primary-foreground transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg"
+                  >
+                    {i + 1}
+                  </div>
+                ))}
+              </div>
+            </DemoContainer>
+            <ButtonGroup
+              label="Rows"
+              options={[
+                { value: "equal", label: "Equal Height" },
+                { value: "auto", label: "Auto Height" },
+                { value: "mixed", label: "Mixed Heights" }
+              ]}
+              value={rows}
+              onChange={setRows}
+            />
           </CardContent>
         </Card>
 
@@ -190,32 +165,21 @@ export default function GridPage() {
             <CardDescription>Create complex layouts with named grid areas</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="h-[200px] rounded-lg border bg-muted/40 p-4 grid grid-cols-3 grid-rows-3 gap-2">
-              {getGridLayout()}
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <Button 
-                variant={layout === 1 ? "default" : "outline"} 
-                size="sm"
-                onClick={() => setLayout(1)}
-              >
-                Layout 1
-              </Button>
-              <Button 
-                variant={layout === 2 ? "default" : "outline"} 
-                size="sm"
-                onClick={() => setLayout(2)}
-              >
-                Layout 2
-              </Button>
-              <Button 
-                variant={layout === 3 ? "default" : "outline"} 
-                size="sm"
-                onClick={() => setLayout(3)}
-              >
-                Layout 3
-              </Button>
-            </div>
+            <DemoContainer>
+              <div className="grid grid-cols-3 grid-rows-3 gap-2 h-full">
+                {getGridLayout()}
+              </div>
+            </DemoContainer>
+            <ButtonGroup
+              label="Layout"
+              options={[
+                { value: 1, label: "Layout 1" },
+                { value: 2, label: "Layout 2" },
+                { value: 3, label: "Layout 3" }
+              ]}
+              value={layout}
+              onChange={setLayout}
+            />
           </CardContent>
         </Card>
 
@@ -225,16 +189,18 @@ export default function GridPage() {
             <CardDescription>Control spacing between grid items</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className={`h-[200px] rounded-lg border bg-muted/40 p-4 grid grid-cols-3 ${getGridGap()}`}>
+            <DemoContainer>
+              <div className={`grid grid-cols-3 ${getGridGap()} h-full`}>
               {Array.from({ length: 9 }).map((_, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-center rounded-lg bg-primary text-primary-foreground transition-all duration-300 ease-in-out hover:scale-105"
+                  className="flex items-center justify-center rounded-lg bg-primary text-primary-foreground transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg"
                 >
                   {i + 1}
                 </div>
               ))}
-            </div>
+              </div>
+            </DemoContainer>
             <div className="flex flex-wrap gap-2">
               <Button 
                 variant={gap === 1 ? "default" : "outline"} 

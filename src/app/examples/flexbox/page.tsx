@@ -3,6 +3,9 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { PageHeader } from "@/components/ui/page-header"
+import { ButtonGroup } from "@/components/ui/button-group"
+import { DemoContainer } from "@/components/ui/demo-container"
 
 export default function FlexboxPage() {
   const [flexDirection, setFlexDirection] = useState("row")
@@ -42,12 +45,10 @@ export default function FlexboxPage() {
 
   return (
     <div className="container mx-auto max-w-7xl py-8 space-y-8">
-      <div className="flex flex-col items-start gap-4">
-        <h1 className="text-4xl font-bold tracking-tight">Flexbox Layout</h1>
-        <p className="text-lg text-muted-foreground">
-          Learn and experiment with Flexbox properties through interactive examples.
-        </p>
-      </div>
+      <PageHeader
+        title="Flexbox Layout"
+        description="Learn and experiment with Flexbox properties through interactive examples."
+      />
 
       <Card>
         <CardHeader>
@@ -57,91 +58,55 @@ export default function FlexboxPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-8">
-          <div
-            className="h-[300px] rounded-lg border bg-muted/40 p-4 transition-all duration-300 ease-in-out"
-            style={{
-              display: "flex",
-              flexDirection,
-              justifyContent,
-              alignItems,
-              flexWrap,
-              gap: "0.5rem",
-            }}
-          >
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div
-                key={i}
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground transform transition-all duration-500 ease-in-out hover:scale-110 hover:shadow-lg"
-              >
-                {i + 1}
-              </div>
-            ))}
-          </div>
+          <DemoContainer className="grid place-items-center p-8" height={400}>
+            <div
+              className="flex h-full w-full gap-4 rounded-lg bg-muted/40 p-4 transition-all duration-500 ease-in-out"
+              style={{
+                flexDirection,
+                justifyContent,
+                alignItems,
+                flexWrap
+              }}
+            >
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground transform transition-transform duration-500 ease-in-out hover:scale-110 hover:shadow-lg"
+                >
+                  {i + 1}
+                </div>
+              ))}
+            </div>
+          </DemoContainer>
 
           <div className="grid gap-6">
-            <div className="space-y-2">
-              <h3 className="text-sm font-medium">Flex Direction</h3>
-              <div className="flex flex-wrap gap-2">
-                {flexDirections.map(({ value, label }) => (
-                  <Button
-                    key={value}
-                    variant={flexDirection === value ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setFlexDirection(value)}
-                  >
-                    {label}
-                  </Button>
-                ))}
-              </div>
-            </div>
+            <ButtonGroup
+              label="Flex Direction"
+              options={flexDirections}
+              value={flexDirection}
+              onChange={setFlexDirection}
+            />
 
-            <div className="space-y-2">
-              <h3 className="text-sm font-medium">Justify Content</h3>
-              <div className="flex flex-wrap gap-2">
-                {justifyOptions.map(({ value, label }) => (
-                  <Button
-                    key={value}
-                    variant={justifyContent === value ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setJustifyContent(value)}
-                  >
-                    {label}
-                  </Button>
-                ))}
-              </div>
-            </div>
+            <ButtonGroup
+              label="Justify Content"
+              options={justifyOptions}
+              value={justifyContent}
+              onChange={setJustifyContent}
+            />
 
-            <div className="space-y-2">
-              <h3 className="text-sm font-medium">Align Items</h3>
-              <div className="flex flex-wrap gap-2">
-                {alignOptions.map(({ value, label }) => (
-                  <Button
-                    key={value}
-                    variant={alignItems === value ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setAlignItems(value)}
-                  >
-                    {label}
-                  </Button>
-                ))}
-              </div>
-            </div>
+            <ButtonGroup
+              label="Align Items"
+              options={alignOptions}
+              value={alignItems}
+              onChange={setAlignItems}
+            />
 
-            <div className="space-y-2">
-              <h3 className="text-sm font-medium">Flex Wrap</h3>
-              <div className="flex flex-wrap gap-2">
-                {wrapOptions.map(({ value, label }) => (
-                  <Button
-                    key={value}
-                    variant={flexWrap === value ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setFlexWrap(value)}
-                  >
-                    {label}
-                  </Button>
-                ))}
-              </div>
-            </div>
+            <ButtonGroup
+              label="Flex Wrap"
+              options={wrapOptions}
+              value={flexWrap}
+              onChange={setFlexWrap}
+            />
           </div>
         </CardContent>
       </Card>

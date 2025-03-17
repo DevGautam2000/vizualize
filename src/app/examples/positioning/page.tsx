@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { DemoContainer } from "@/components/ui/demo-container"
 
 export default function PositioningPage() {
   const [relativePosition, setRelativePosition] = useState(false)
@@ -11,6 +12,7 @@ export default function PositioningPage() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   return (
+    <>
     <div className="container mx-auto max-w-7xl py-8 space-y-8">
       <div className="flex flex-col items-start gap-4">
         <h1 className="text-4xl font-bold tracking-tight">CSS Positioning</h1>
@@ -57,21 +59,19 @@ export default function PositioningPage() {
             <CardDescription>Position elements relative to their closest positioned ancestor</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="h-[200px] rounded-lg border bg-muted/40 p-4 relative">
-              <div className="absolute inset-4 grid place-items-center rounded-lg border-2 border-dashed border-muted-foreground/50">
+            <div className="h-[200px] rounded-lg border bg-muted/40 p-8 relative grid place-items-center">
                 <div className="relative h-24 w-24 rounded-lg bg-secondary">
                   <div 
                     className={`absolute h-12 w-12 rounded-lg bg-primary text-primary-foreground grid place-items-center transform transition-all duration-500 ease-in-out
-                      ${absolutePosition === "top-left" ? "top-0 left-0 -translate-x-4 -translate-y-4" : ""}
-                      ${absolutePosition === "top-right" ? "top-0 right-0 translate-x-4 -translate-y-4" : ""}
-                      ${absolutePosition === "bottom-left" ? "bottom-0 left-0 -translate-x-4 translate-y-4" : ""}
-                      ${absolutePosition === "bottom-right" ? "bottom-0 right-0 translate-x-4 translate-y-4" : ""}
+                      ${absolutePosition === "top-left" ? "top-0 left-0 -translate-x-6 -translate-y-6" : ""}
+                      ${absolutePosition === "top-right" ? "top-0 right-0 translate-x-6 -translate-y-6" : ""}
+                      ${absolutePosition === "bottom-left" ? "bottom-0 left-0 -translate-x-6 translate-y-6" : ""}
+                      ${absolutePosition === "bottom-right" ? "bottom-0 right-0 translate-x-6 translate-y-6" : ""}
                     `}
                   >
                     1
                   </div>
                 </div>
-              </div>
             </div>
             <div className="flex flex-wrap gap-2">
               <Button 
@@ -112,15 +112,13 @@ export default function PositioningPage() {
             <CardDescription>Position elements relative to the viewport</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="h-[200px] rounded-lg border bg-muted/40 p-4 relative overflow-hidden">
-              <div className="absolute inset-4 rounded-lg border-2 border-dashed border-muted-foreground/50 overflow-auto">
+            <DemoContainer className="overflow-hidden">
                 <div className="h-[400px] relative">
                   {showFixed && (
                     <div className="fixed bottom-4 right-4 h-12 w-12 rounded-lg bg-primary text-primary-foreground grid place-items-center">↑</div>
                   )}
                 </div>
-              </div>
-            </div>
+            </DemoContainer>
             <div className="flex gap-2">
               <Button 
                 variant={showFixed ? "default" : "outline"} 
@@ -146,9 +144,9 @@ export default function PositioningPage() {
             <CardDescription>Elements that stick to the viewport while scrolling</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="h-[200px] rounded-lg border bg-muted/40 p-4 relative overflow-hidden">
+            <DemoContainer className="overflow-hidden">
               <div 
-                className="absolute inset-4 rounded-lg border-2 border-dashed border-muted-foreground/50 overflow-auto"
+                className="absolute inset-4 rounded-lg overflow-auto"
                 onScroll={(e) => setIsScrolled(e.currentTarget.scrollTop > 0)}
               >
                 <div className="space-y-4 p-4">
@@ -158,7 +156,7 @@ export default function PositioningPage() {
                   ))}
                 </div>
               </div>
-            </div>
+            </DemoContainer>
             <div className="flex gap-2">
               <Button 
                 variant={isScrolled ? "default" : "outline"} 
@@ -185,5 +183,6 @@ export default function PositioningPage() {
         </Card>
       </div>
     </div>
+    </>
   )
 }
