@@ -8,8 +8,11 @@ export default function ExamplesLayout({
 }: {
   children: ReactNode;
 }) {
+
+  const pathname = usePathname();
+
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen w-screen px-12">
       <aside className="w-[15%] border-r p-4 bg-background">
         <nav className="space-y-1">
           {[
@@ -17,8 +20,9 @@ export default function ExamplesLayout({
             { href: "/examples/flexbox", label: "Flexbox" },
             { href: "/examples/grid", label: "Grid" },
             { href: "/examples/positioning", label: "Positioning" },
+            { href: "/examples/animations", label: "Animations" },
+            { href: "/examples/responsive", label: "Responsive" },
           ].map(({ href, label }) => {
-            const pathname = usePathname();
             const isActive = pathname === href || 
               (href !== "/" && pathname?.startsWith(href));
 

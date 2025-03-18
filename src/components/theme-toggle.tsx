@@ -16,6 +16,8 @@ export function ThemeToggle() {
   const { setTheme } = useTheme()
 
   return (
+    <span className="relative left-4">
+    
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon" className="transition-colors duration-300 hover:bg-primary/10">
@@ -36,5 +38,6 @@ export function ThemeToggle() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+    </span>
   )
 }

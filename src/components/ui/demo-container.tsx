@@ -1,7 +1,7 @@
 interface DemoContainerProps {
   children: React.ReactNode
   className?: string,
-  height?:Number
+  height?:number
 }
 
 export function DemoContainer({ children, className = "",height=200 }: DemoContainerProps) {

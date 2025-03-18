@@ -1,17 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { PageHeader } from "@/components/ui/page-header"
 import { ButtonGroup } from "@/components/ui/button-group"
 import { DemoContainer } from "@/components/ui/demo-container"
 
 export default function FlexboxPage() {
-  const [flexDirection, setFlexDirection] = useState("row")
-  const [justifyContent, setJustifyContent] = useState("flex-start")
-  const [alignItems, setAlignItems] = useState("flex-start")
-  const [flexWrap, setFlexWrap] = useState("nowrap")
+  const [flexDirection, setFlexDirection] = useState<'row' | 'column' | 'row-reverse' | 'column-reverse'>('row')
+  const [justifyContent, setJustifyContent] = useState<'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly'>('flex-start')
+  const [alignItems, setAlignItems] = useState<'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'>('flex-start')
+  const [flexWrap, setFlexWrap] = useState<'nowrap' | 'wrap' | 'wrap-reverse'>('nowrap')
 
   const flexDirections = [
     { value: "row", label: "Row" },
@@ -84,28 +83,28 @@ export default function FlexboxPage() {
               label="Flex Direction"
               options={flexDirections}
               value={flexDirection}
-              onChange={setFlexDirection}
+              onChange={(value) => setFlexDirection(value as 'row' | 'column' | 'row-reverse' | 'column-reverse')}
             />
 
             <ButtonGroup
               label="Justify Content"
               options={justifyOptions}
               value={justifyContent}
-              onChange={setJustifyContent}
+              onChange={(value) => setJustifyContent(value as 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly')}
             />
 
             <ButtonGroup
               label="Align Items"
               options={alignOptions}
               value={alignItems}
-              onChange={setAlignItems}
+              onChange={(value) => setAlignItems(value as 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline')}
             />
 
             <ButtonGroup
               label="Flex Wrap"
               options={wrapOptions}
               value={flexWrap}
-              onChange={setFlexWrap}
+              onChange={(value) => setFlexWrap(value as 'nowrap' | 'wrap' | 'wrap-reverse')}
             />
           </div>
         </CardContent>

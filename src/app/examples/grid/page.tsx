@@ -8,7 +8,7 @@ import { ButtonGroup } from "@/components/ui/button-group"
 import { DemoContainer } from "@/components/ui/demo-container"
 
 export default function GridPage() {
-  const [columns, setColumns] = useState(3)
+  const [columns, setColumns] = useState<number | 'auto'>(3)
   const [rows, setRows] = useState("auto")
   const [layout, setLayout] = useState(1)
   const [gap, setGap] = useState(2)
@@ -123,7 +123,7 @@ export default function GridPage() {
                 { value: "auto", label: "Auto-fit" }
               ]}
               value={columns}
-              onChange={setColumns}
+              onChange={(value) => setColumns(typeof value === 'string' ? value as 'auto' : Number(value))}
             />
           </CardContent>
         </Card>
@@ -154,7 +154,7 @@ export default function GridPage() {
                 { value: "mixed", label: "Mixed Heights" }
               ]}
               value={rows}
-              onChange={setRows}
+              onChange={(value) => setRows(value.toString())}
             />
           </CardContent>
         </Card>
@@ -178,7 +178,7 @@ export default function GridPage() {
                 { value: 3, label: "Layout 3" }
               ]}
               value={layout}
-              onChange={setLayout}
+              onChange={(value) => setLayout(Number(value))}
             />
           </CardContent>
         </Card>
