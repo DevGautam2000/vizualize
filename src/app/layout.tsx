@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Vizualizer",
   description: "Interactive platform for learning CSS concepts",
   icons: {
-    icon: "/vizualize.svg"
+    icon: "https://raw.githubusercontent.com/DevGautam2000/visualize/refs/heads/main/public/visualize.svg"
   }
 };
 
