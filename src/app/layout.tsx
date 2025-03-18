@@ -16,8 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CSS Visualizer - Interactive CSS Learning Platform",
-  description: "Interactive platform for learning CSS concepts like Flexbox, Grid, and more through visual examples and live editing.",
+  title: "Vizualizer",
+  description: "Interactive platform for learning CSS concepts",
+  icons: {
+    icon: "/vizualize.svg"
+  }
 };
 
 export default function RootLayout({
