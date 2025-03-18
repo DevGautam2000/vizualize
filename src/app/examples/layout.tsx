@@ -23,7 +23,7 @@ export default function ExamplesLayout({
       >
         {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </Button>
-      <aside className={`fixed inset-y-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-200 ease-in-out md:relative md:w-[15%] border-r p-4 bg-background z-40 w-64`}>
+      <aside className={`fixed inset-y-0  left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} top-14 md:top-0 md:translate-x-0 transition-transform duration-200 ease-in-out md:relative md:w-[15%] border-r p-4 bg-background z-40 w-64`}>
         <nav className="space-y-1">
           {[
             { href: "/", label: "Home" },
