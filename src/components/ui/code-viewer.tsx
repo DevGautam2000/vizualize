@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { coldarkCold, materialLight, oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { coldarkCold, oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Copy, Code2, X } from "lucide-react";
 
 interface CodeViewerProps {
