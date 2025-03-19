@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
+import { CodeViewer } from "@/components/ui/code-viewer";
 
 export default function TransformsExample() {
   const [rotate, setRotate] = useState(0);
@@ -13,6 +14,10 @@ export default function TransformsExample() {
 
   return (
     <div className="container mx-auto py-8">
+      <CodeViewer code={`transform: 
+  rotate(${rotate}deg)
+  scale(${scaleX}, ${scaleY})
+  skew(${skewX}deg, ${skewY}deg);`} language="css" />
       <h1 className="text-3xl font-bold mb-8">CSS Transforms</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

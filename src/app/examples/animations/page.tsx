@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { CodeViewer } from "@/components/ui/code-viewer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { PageHeader } from "@/components/ui/page-header"
 import { ButtonGroup } from "@/components/ui/button-group"
@@ -57,8 +58,14 @@ export default function AnimationsPage() {
     }
   }
 
+  const sourceCode = `animation-type: ${animationType};
+duration: ${duration}ms;
+timing-function: ${easing};
+transform: ${isPlaying ? getAnimationClass().split(' ').filter(c => c.startsWith('translate') || c.startsWith('rotate') || c.startsWith('scale')).join(' ') : 'none'};`;
+
   return (
     <div className="container mx-auto max-w-7xl py-8 space-y-8 ">
+      <CodeViewer code={sourceCode} language="css" />
       <PageHeader
         title="CSS Animations"
         description="Explore CSS animations, transitions, and transforms with interactive examples."

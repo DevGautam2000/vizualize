@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { CodeViewer } from "@/components/ui/code-viewer";
 
 export default function GradientsExample() {
   const [gradientType, setGradientType] = useState("linear");
@@ -21,8 +22,11 @@ export default function GradientsExample() {
     }
   };
 
+  const sourceCode = `${getGradientStyle()}`;
+
   return (
     <div className="container mx-auto py-8">
+      <CodeViewer code={sourceCode} language="css" />
       <h1 className="text-3xl font-bold mb-8">CSS Gradients</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

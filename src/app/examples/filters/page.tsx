@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
+import { CodeViewer } from "@/components/ui/code-viewer";
 
 export default function FiltersExample() {
   const [blur, setBlur] = useState(0);
@@ -12,8 +13,17 @@ export default function FiltersExample() {
   const [hueRotate, setHueRotate] = useState(0);
   const [saturate, setSaturate] = useState(100);
 
+  const sourceCode = `filter: 
+  blur(${blur}px)
+  brightness(${brightness}%)
+  contrast(${contrast}%)
+  grayscale(${grayscale}%)
+  hue-rotate(${hueRotate}deg)
+  saturate(${saturate}%)`;
+
   return (
     <div className="container mx-auto py-8">
+      <CodeViewer code={sourceCode} language="css" />
       <h1 className="text-3xl font-bold mb-8">CSS Filters</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

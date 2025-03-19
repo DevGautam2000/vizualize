@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { CodeViewer } from "@/components/ui/code-viewer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { PageHeader } from "@/components/ui/page-header"
 import { ButtonGroup } from "@/components/ui/button-group"
@@ -42,8 +43,15 @@ export default function FlexboxPage() {
     { value: "wrap-reverse", label: "Wrap Reverse" },
   ]
 
+  const sourceCode = `display: flex;
+flex-direction: ${flexDirection};
+justify-content: ${justifyContent};
+align-items: ${alignItems};
+flex-wrap: ${flexWrap};`;
+
   return (
     <div className="container mx-auto max-w-7xl py-8 space-y-8">
+      <CodeViewer code={sourceCode} language="css" />
       <PageHeader
         title="Flexbox Layout"
         description="Learn and experiment with Flexbox properties through interactive examples."

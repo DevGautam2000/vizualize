@@ -11,6 +11,7 @@ import {
 import { PageHeader } from "@/components/ui/page-header";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { DemoContainer } from "@/components/ui/demo-container";
+import { CodeViewer } from "@/components/ui/code-viewer";
 
 export default function ResponsivePage() {
   const [layout, setLayout] = useState("mobile");
@@ -56,6 +57,11 @@ export default function ResponsivePage() {
 
   return (
     <div className="container mx-auto max-w-7xl py-8 space-y-8">
+      <CodeViewer code={`display: grid;
+grid-template-columns: ${layout === 'mobile' ? '1fr' : layout === 'tablet' ? `repeat(${Math.min(columns, 2)}, 1fr)` : `repeat(${columns}, 1fr)`};
+gap: ${spacing * 0.25}rem;
+max-width: ${layout === 'mobile' ? '24rem' : layout === 'tablet' ? '42rem' : '100%'};
+padding: ${layout === 'mobile' ? '1rem' : layout === 'tablet' ? '1.5rem' : '2rem'};`} language="css" />
       <PageHeader
         title="Responsive Design"
         description="Learn responsive design principles with interactive examples and breakpoints."

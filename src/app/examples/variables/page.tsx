@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { CodeViewer } from "@/components/ui/code-viewer";
 
 export default function VariablesExample() {
   const [primaryColor, setPrimaryColor] = useState("#3b82f6");
@@ -10,8 +11,14 @@ export default function VariablesExample() {
   const [spacing, setSpacing] = useState("1rem");
   const [borderRadius, setBorderRadius] = useState("0.5rem");
 
+  const sourceCode = `--primary: ${primaryColor};
+--accent: ${accentColor};
+--spacing: ${spacing};
+--radius: ${borderRadius};`;
+
   return (
     <div className="container mx-auto py-8">
+      <CodeViewer code={sourceCode} language="css" />
       <h1 className="text-3xl font-bold mb-8">CSS Variables (Custom Properties)</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

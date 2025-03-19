@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { CodeViewer } from "@/components/ui/code-viewer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { DemoContainer } from "@/components/ui/demo-container"
 
@@ -11,9 +12,24 @@ export default function PositioningPage() {
   const [showFixed, setShowFixed] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
 
+  const getPositionCode = () => {
+    let code = '';
+    if (relativePosition) {
+      code += 'position: relative;\ntransform: translate(1rem, -1rem);\n';
+    }
+    if (absolutePosition) {
+      code += `position: absolute;\n${absolutePosition.includes('top') ? 'top: 0;' : 'bottom: 0;'}\n${absolutePosition.includes('left') ? 'left: 0;' : 'right: 0;'}\ntransform: translate(${absolutePosition.includes('left') ? '-1.5rem' : '1.5rem'}, ${absolutePosition.includes('top') ? '-1.5rem' : '1.5rem'});\n`;
+    }
+    if (showFixed) {
+      code += 'position: fixed;\ntop: 1rem;\nright: 1rem;';
+    }
+    return code || 'position: static;';
+  };
+
   return (
     <>
     <div className="container mx-auto max-w-7xl py-8 space-y-8">
+      <CodeViewer code={getPositionCode()} language="css" />
       <div className="flex flex-col items-start gap-4">
         <h1 className="text-4xl font-bold tracking-tight">CSS Positioning</h1>
         <p className="text-lg text-muted-foreground">Learn how different position values affect elements in the layout.</p>

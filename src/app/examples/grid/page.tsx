@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { CodeViewer } from "@/components/ui/code-viewer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { PageHeader } from "@/components/ui/page-header"
@@ -88,8 +89,14 @@ export default function GridPage() {
     }
   }
 
+  const sourceCode = `display: grid;
+grid-template-columns: ${getGridTemplateColumns()};
+grid-template-rows: ${getGridTemplateRows()};
+gap: ${getGridGap()};`;
+
   return (
     <div className="container mx-auto max-w-7xl py-8 space-y-8">
+      <CodeViewer code={sourceCode} language="css" />
       <PageHeader
         title="Grid Layout"
         description="Master CSS Grid with interactive examples and visual guides."
