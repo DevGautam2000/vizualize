@@ -32,6 +32,10 @@ export default function ExamplesLayout({
             { href: "/examples/positioning", label: "Positioning" },
             { href: "/examples/animations", label: "Animations" },
             { href: "/examples/responsive", label: "Responsive" },
+            { href: "/examples/transforms", label: "Transforms" },
+            { href: "/examples/variables", label: "Variables" },
+            { href: "/examples/filters", label: "Filters" },
+            { href: "/examples/gradients", label: "Gradients" },
           ].map(({ href, label }) => {
             const isActive = pathname === href || 
               (href !== "/" && pathname?.startsWith(href));
